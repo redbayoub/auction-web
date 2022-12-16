@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="container px-2 mx-auto flex flex-col h-screen">
+    <Navbar />
+
     <h1 class="text-3xl font-bold underline">
       Hello world! {{ user.username }}
     </h1>
-
-    <a href="#" @click.prevent="logout">Logout</a>
   </div>
 </template>
 
@@ -15,13 +15,6 @@ export default {
     return {
       user: this.$auth.user.data,
     }
-  },
-  methods: {
-    async logout() {
-      await this.$auth.logout()
-
-      this.$router.push('/login')
-    },
   },
 }
 </script>

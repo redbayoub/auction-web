@@ -39,7 +39,10 @@
               rounded-md
             "
           />
-          <p class="text-xs text-red-400" v-if="error && error.data.username">
+          <p
+            class="text-xs text-red-400"
+            v-if="error && error.data && error.data.username"
+          >
             {{ error.data.username[0] }}
           </p>
 
@@ -61,24 +64,14 @@
               rounded-md
             "
           />
-          <p class="text-xs text-red-400" v-if="error && error.data.password">
+          <p
+            class="text-xs text-red-400"
+            v-if="error && error.data && error.data.password"
+          >
             {{ error.data.password[0] }}
           </p>
           <div class="flex justify-between items-baseline">
-            <button
-              type="submit"
-              class="
-                mt-4
-                bg-purple-500
-                text-white
-                py-2
-                px-6
-                rounded-md
-                hover:bg-purple-600
-              "
-            >
-              Login
-            </button>
+            <Button type="submit" class="mt-4"> Login</Button>
           </div>
         </form>
       </div>
