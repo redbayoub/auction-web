@@ -1,18 +1,6 @@
 <template>
   <div
-    class="
-      relative
-      flex
-      min-h-screen
-      text-gray-800
-      antialiased
-      flex-col
-      justify-center
-      overflow-hidden
-      bg-gray-50
-      py-6
-      sm:py-12
-    "
+    class="relative flex text-gray-800 antialiased flex-col justify-center overflow-hidden"
   >
     <div class="relative py-3 sm:w-96 mx-auto text-center">
       <span class="text-2xl font-light">Login to your account</span>
@@ -21,58 +9,30 @@
 
         <form class="px-8 py-6" method="post" @submit.prevent="login">
           <Alert type="info" v-bind:message="error.message" v-if="error" />
-          <label class="block font-semibold"> Username </label>
-          <input
-            type="text"
-            placeholder="Username"
-            v-model="username"
-            required
-            class="
-              border
-              w-full
-              h-5
-              px-3
-              py-5
-              mt-2
-              hover:outline-none
-              focus:outline-none focus:ring-indigo-500 focus:ring-1
-              rounded-md
-            "
-          />
-          <p
-            class="text-xs text-red-400"
-            v-if="error && error.data && error.data.username"
-          >
-            {{ error.data.username[0] }}
-          </p>
-
-          <label class="block mt-3 font-semibold"> Password </label>
-          <input
-            type="password"
-            placeholder="Password"
-            v-model="password"
-            required
-            class="
-              border
-              w-full
-              h-5
-              px-3
-              py-5
-              mt-2
-              hover:outline-none
-              focus:outline-none focus:ring-indigo-500 focus:ring-1
-              rounded-md
-            "
-          />
-          <p
-            class="text-xs text-red-400"
-            v-if="error && error.data && error.data.password"
-          >
-            {{ error.data.password[0] }}
-          </p>
-          <div class="flex justify-between items-baseline">
-            <Button type="submit" class="mt-4"> Login</Button>
+          <div class="mb-2">
+            <FormInput
+              label="Username"
+              v-model="username"
+              placeholder="Username"
+              :error="error?.data?.username && error.data.username[0]"
+              required
+              :disabled="inProgress"
+            />
           </div>
+
+          <div class="mb-2">
+            <FormInput
+              type="password"
+              label="Password"
+              v-model="password"
+              placeholder="Password"
+              :error="error?.data?.password && error.data.password[0]"
+              required
+              :disabled="inProgress"
+            />
+          </div>
+
+          <Button :loading="inProgress"> Login</Button>
         </form>
       </div>
     </div>
@@ -87,11 +47,13 @@ export default {
       username: '',
       password: '',
       error: null,
+      inProgress: false,
     }
   },
   methods: {
     async login() {
       try {
+        this.inProgress = true
         await this.$auth.loginWith('laravelSanctum', {
           data: {
             username: this.username,
@@ -102,6 +64,8 @@ export default {
         this.$router.push('/')
       } catch (e) {
         this.error = e.response.data
+      } finally {
+        this.inProgress = false
       }
     },
   },
