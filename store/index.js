@@ -1,0 +1,1 @@
+// this file is left empty only to enable vuex store
