@@ -28,7 +28,7 @@
         >
 
         <span class="mb-2"
-          >Current bid: <strong>{{ item.price }}$</strong></span
+          >Current price: <strong>{{ item.price }}$</strong></span
         >
         <Alert
           v-if="isAuctionClosed"
