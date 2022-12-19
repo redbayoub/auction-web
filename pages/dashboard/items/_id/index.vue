@@ -12,7 +12,7 @@
     </div>
     <div class="flex gap-5 flex-col md:flex-row py-5">
       <img
-        :src="'http://localhost' + item.image"
+        :src="item.image"
         class="rounded-t h-72 w-full object-cover"
       />
       <div class="flex flex-col">
