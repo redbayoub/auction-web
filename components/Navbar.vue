@@ -6,8 +6,9 @@
       </NuxtLink>
       <div class="">
         <ul
-          class="flex-col md:flex-row flex md:space-x-8 md:text-sm md:font-medium"
+          class=" flex md:space-x-8 md:text-sm md:font-medium"
         >
+          <NotificationsDropdown />
           <NavDropdown v-if="isLoggedIn">
             <template v-slot:button>
               {{ username }}
