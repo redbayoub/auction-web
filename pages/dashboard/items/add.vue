@@ -116,8 +116,11 @@ export default {
             'Content-Type': 'multipart/form-data',
           },
         })
-
-        this.$router.push('/dashboard/items')
+        try {
+          this.$router.push('/dashboard/items')
+        } catch (error) {
+          console.log(error)
+        }
       } catch (e) {
         this.error = e.response.data
       } finally {

@@ -5,9 +5,7 @@
         <span class="font-medium text-lg">Auction</span>
       </NuxtLink>
       <div class="">
-        <ul
-          class=" flex md:space-x-8 md:text-sm md:font-medium"
-        >
+        <ul class="flex md:space-x-8 md:text-sm md:font-medium">
           <NotificationsDropdown />
           <NavDropdown v-if="isLoggedIn">
             <template v-slot:button>
@@ -73,8 +71,11 @@ export default {
       try {
         this.inProgress = true
         await this.$auth.logout()
-
-        this.$router.push('/login')
+        try {
+          this.$router.push('/login')
+        } catch (error) {
+          console.log(error)
+        }
       } catch (e) {
         console.log(e)
       } finally {

@@ -60,8 +60,11 @@ export default {
             password: this.password,
           },
         })
-
-        this.$router.push('/')
+        try {
+          this.$router.push('/')
+        } catch (error) {
+          console.log(error)
+        }
       } catch (e) {
         this.error = e.response.data
       } finally {

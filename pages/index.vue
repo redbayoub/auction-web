@@ -2,8 +2,12 @@
 export default {
   name: 'IndexPage',
   middleware({ $auth, redirect }) {
-    if ($auth.user.data.isAdmin) return redirect('/dashboard')
-    else return redirect('/items')
+    try {
+      if ($auth.user.data.isAdmin) return redirect('/dashboard')
+      else return redirect('/items')
+    } catch (error) {
+      console.log(error)
+    }
   },
 }
 </script>

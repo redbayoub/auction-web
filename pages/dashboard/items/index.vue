@@ -197,12 +197,19 @@ export default {
       urlParams.set('searchTerm', this.searchTerm)
 
       const route = window.location.pathname + '?' + urlParams.toString()
-
-      this.$router.push(route)
+      try {
+        this.$router.push(route)
+      } catch (error) {
+        console.log(error)
+      }
     },
     clearQuery() {
       const route = window.location.pathname
-      this.$router.push(route)
+      try {
+        this.$router.push(route)
+      } catch (error) {
+        console.log(error)
+      }
     },
 
     changeSort() {
@@ -221,7 +228,11 @@ export default {
       else urlParams.delete('sort')
       const route = window.location.pathname + '?' + urlParams.toString()
 
-      this.$router.push(route)
+      try {
+        this.$router.push(route)
+      } catch (error) {
+        console.log(error)
+      }
     },
 
     async deleteCurrent(id) {

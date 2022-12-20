@@ -9,7 +9,7 @@
         Auctioned Items
       </h3>
       <div class="flex gap-3 py-2 flex-col sm:flex-row">
-        <SortSelect :onChange="onSortChange" :value="sort"  />
+        <SortSelect :onChange="onSortChange" :value="sort" />
         <Search v-model="searchTerm" @submit.prevent="startSearch()" />
 
         <Button
@@ -97,12 +97,19 @@ export default {
       let urlParams = new URLSearchParams(window.location.search)
       urlParams.set('searchTerm', this.searchTerm)
       const route = window.location.pathname + '?' + urlParams.toString()
-
-      this.$router.push(route)
+      try {
+        this.$router.push(route)
+      } catch (error) {
+        console.log(error)
+      }
     },
     clearQuery() {
       const route = window.location.pathname
-      this.$router.push(route)
+      try {
+        this.$router.push(route)
+      } catch (error) {
+        console.log(error)
+      }
     },
     onSortChange(event) {
       const value = event.target.value
@@ -111,7 +118,11 @@ export default {
       urlParams.set('sort', value)
       const route = window.location.pathname + '?' + urlParams.toString()
 
-      this.$router.push(route)
+      try {
+        this.$router.push(route)
+      } catch (error) {
+        console.log(error)
+      }
     },
   },
 }

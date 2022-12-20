@@ -2,7 +2,11 @@
 export default {
   layout: 'dashboard',
   middleware({ redirect }) {
-    return redirect('/dashboard/items')
+    try {
+      return redirect('/dashboard/items')
+    } catch (error) {
+      console.log(error)
+    }
   },
 }
 </script>
