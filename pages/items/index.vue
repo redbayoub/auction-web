@@ -42,7 +42,6 @@
       v-if="items.length > 0"
     >
       <ItemCard
-        class="rounded shadow-lg shadow-gray-200 bg-white duration-300 hover:-translate-y-1"
         v-for="item in items"
         :key="item.id"
         :item="item"
