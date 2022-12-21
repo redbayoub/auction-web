@@ -1,68 +1,67 @@
-# auction-web
+# Auction Web
 
-## Build Setup
+This is the **FRONT END** portion of a web auction application for an antique items seller. The application allows users to bid on antique items displayed in the site and admin users to set up items for auction.
 
-```bash
-# install dependencies
-$ npm install
+> You can get the **SERVER** portion of the web application from [https://github.com/redbayoub/auction-server.git](https://github.com/redbayoub/auction-server.git).
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+---
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+## Installation
+For detailed explanation on how things work, check out the [Nuxt documentation](https://nuxtjs.org).
 
-# generate static project
-$ npm run generate
-```
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+Clone the repository
 
-## Special Directories
+    git clone https://github.com/redbayoub/auction-web.git
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
+Switch to the repo folder
 
-### `assets`
+    cd auction-web
 
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
+Install all the dependencies using composer
 
-### `components`
+    npm install
 
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
+Copy the example env file and make the required configuration changes in the `.env` file.  See [Environment variables](#environment-variables).
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
+    cp .env.example .env
 
-### `layouts`
+Serve with hot reload 
 
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
+    npm install
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
+You can now open the web application at [http://localhost:3000](http://localhost:3000).
 
-### `pages`
+    
+Build for production and launch server
 
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
+    npm run build
+    npm install
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
+## Authentication
 
-### `plugins`
+> If the authentication part of the server is done, you can use the following credentials to login
 
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
+Regular User Credentials
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
+-   Username: user1
+-   Password: user2
 
-### `static`
+Admin User Credentials
 
-This directory contains your static files. Each file inside this directory is mapped to `/`.
+-   Username: admin1
+-   Password: admin2
 
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
+## Environment variables
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
+Copy the example env file and make the required configuration changes in the .env file
 
-### `store`
+    cp .env.example .env
 
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
+Environment variables can be set in `.env` file
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+    SERVER_URL=http://localhost:8000
+
+-   SERVER_URL variable refers to the url of the server application
+
