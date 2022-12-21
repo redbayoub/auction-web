@@ -1,5 +1,15 @@
 <template>
   <div>
+    <div class="">
+      <NuxtLink to="/items" class="text-base text-gray-500"
+        >Auctioned Items</NuxtLink
+      >
+      <p
+        class="text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-normal text-gray-800"
+      >
+        Item Details
+      </p>
+    </div>
     <div class="flex gap-5 flex-col md:flex-row py-5">
       <img :src="item.image" class="rounded-t h-72 w-full object-cover" />
       <div class="flex flex-col">
