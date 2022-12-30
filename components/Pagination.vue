@@ -107,17 +107,35 @@ export default {
     },
 
     pages() {
-      let res = []
-      const countPages = 5
-      let firstPage = Math.floor(this.currentPage / countPages) * countPages
-      firstPage = firstPage == 0 ? 1 : firstPage
-      let maxShowPage = firstPage + countPages
-      let lastPage = this.lastPage > maxShowPage ? maxShowPage : this.lastPage
+      const totalPages = this.lastPage
+      const maxPages = 5
 
-      for (let index = firstPage; index <= lastPage; index++) {
-        res.push(index)
+      // Set pages obtained so far, start with 1 since we have currentPage
+      let pagesCount = 1 // Maintain a copy of pagesCount.
+      // Used to detect whether any new pages were added in the iteration
+      let newPagesCount = 1 // Set beginning and end as currentPage
+      let start = this.currentPage,
+        end = this.currentPage // Continue iteration till enough pages are obtained
+      while (pagesCount < maxPages) {
+        if (end + 1 <= totalPages) {
+          // Ok to take one more page towards end
+          end++
+          newPagesCount++
+        }
+        if (start - 1 > 0) {
+          //Ok to take one more page towards start
+          start--
+          newPagesCount++
+        } 
+        /*
+          Break loop if no additional pages were
+          obtained in this iteration
+          We have obtained maximum number of possible pages
+        */
+        if (newPagesCount == pagesCount) break
+        else pagesCount = newPagesCount
       }
-      return res
+      return Array.from(new Array(pagesCount), (x, i) => i + start)
     },
   },
   methods: {
