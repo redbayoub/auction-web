@@ -32,7 +32,10 @@
           message="You are the highest bidder"
           type="info"
         />
-        <div class="mb-2" v-if="!isAuctionClosed">
+        <div
+          class="mb-2"
+          v-if="!isAuctionClosed && item.bid_user_id != currentUserId"
+        >
           <form
             method="post"
             @submit.prevent="submitToggleAutoBid()"
@@ -79,7 +82,7 @@
             <Button :loading="inProgress">Submit a Bid</Button>
           </form>
         </div>
-        <div v-else>
+        <div v-if="isAuctionClosed">
           <div class="mb-2" v-if="item.bid_user_id">
             Awarded To: <strong>{{ item.bid_username }}</strong>
           </div>
