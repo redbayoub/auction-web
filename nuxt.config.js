@@ -18,22 +18,16 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-    '@/assets/css/main.css',
-  ],
+  css: ['@/assets/css/main.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    '~/plugins/axios',
-  ],
+  plugins: ['~/plugins/axios'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
-    '@nuxt/postcss8',
-  ],
+  buildModules: ['@nuxt/postcss8', '@nuxtjs/laravel-echo'],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
@@ -69,6 +63,16 @@ export default {
   },
 
   router: {
-    middleware: ['auth']
+    middleware: ['auth'],
+  },
+
+  echo: {
+    broadcaster: 'pusher',
+    key: "auctionkey",
+    cluster: "mt1",
+    wsHost: 'localhost',
+    wsPort: 6001,
+    forceTLS: false,
+    disableStats: true,
   },
 }

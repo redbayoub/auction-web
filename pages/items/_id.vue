@@ -128,6 +128,7 @@ export default {
   },
   data() {
     return {
+      item: null,
       amount: null,
       inProgress: false,
       error: null,
@@ -135,6 +136,17 @@ export default {
       inAutoBidProgress: false,
       autoBidError: null,
     }
+  },
+  mounted() {
+    this.$echo
+      .channel('items.' + this.item.id + '.bids')
+      .listen('BidSubmittedEvent', (e) => {
+        if (e.bid.item_id == this.item.id) {
+          this.item.bid_user_id = e.bid.user_id
+          this.item.price = e.bid.amount
+          this.amount = this.item.price + 1
+        }
+      })
   },
   methods: {
     onCountdownFinish() {
@@ -146,8 +158,6 @@ export default {
         await this.$axios.$post('/api/items/' + this.item.id + '/bids', {
           amount: this.amount,
         })
-
-        this.$nuxt.refresh()
       } catch (e) {
         this.error = e.response.data
       } finally {
