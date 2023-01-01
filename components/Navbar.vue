@@ -15,6 +15,23 @@
             <template v-slot:items="slotProps">
               <li v-if="!isAdmin">
                 <span
+                  v-if="$route.path == '/profile'"
+                  class="text-sm block px-4 py-2 text-blue-700"
+                >
+                  Profile
+                </span>
+                <NuxtLink
+                  v-else
+                  to="/profile"
+                  @click.native="
+                    slotProps.showDropdown = !slotProps.showDropdown
+                  "
+                  class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2"
+                  >Profile</NuxtLink
+                >
+              </li>
+              <li v-if="!isAdmin">
+                <span
                   v-if="$route.path == '/user-settings'"
                   class="text-sm block px-4 py-2 text-blue-700"
                 >
