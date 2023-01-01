@@ -147,6 +147,14 @@ export default {
           this.amount = this.item.price + 1
         }
       })
+
+    this.$echo
+      .channel('items.' + this.item.id)
+      .listen('ItemUpdatedEvent', (e) => {
+        if (e.item.id == this.item.id) {
+          this.item = e.item
+        }
+      })
   },
   methods: {
     onCountdownFinish() {
