@@ -23,7 +23,7 @@
                 scope="col"
                 class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
               >
-                #
+                Item Id
               </th>
               <th
                 scope="col"
@@ -112,7 +112,7 @@
                   scope="col"
                   class="text-sm font-medium text-gray-900 px-6 py-4 text-left"
                 >
-                  #
+                  Item Id
                 </th>
                 <th
                   scope="col"
@@ -147,7 +147,7 @@
                 <td
                   class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"
                 >
-                  {{ index + 1 }}
+                  {{ bid.item.id }}
                 </td>
                 <td
                   class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap"
