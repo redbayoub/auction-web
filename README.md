@@ -62,6 +62,13 @@ Copy the example env file and make the required configuration changes in the .en
 Environment variables can be set in `.env` file
 
     SERVER_URL=http://localhost:8000
+    
+    PUSHER_APP_KEY= auctionkey
+    PUSHER_APP_CLUSTER= mt1
+    PUSHER_HOST= localhost
+    PUSHER_PORT=  6001
 
 -   SERVER_URL variable refers to the url of the server application
+
+-   PUSHER_* variables are related to websockets server and make sure they match the back-end
 

@@ -68,10 +68,10 @@ export default {
 
   echo: {
     broadcaster: 'pusher',
-    key: "auctionkey",
-    cluster: "mt1",
-    wsHost: 'localhost',
-    wsPort: 6001,
+    key: process.env.PUSHER_APP_KEY ?? 'auctionkey',
+    cluster: process.env.PUSHER_APP_CLUSTER ?? 'mt1',
+    wsHost: process.env.PUSHER_HOST ?? 'localhost',
+    wsPort: process.env.PUSHER_PORT ?? 6001,
     forceTLS: false,
     disableStats: true,
   },
